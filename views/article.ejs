@@ -1,0 +1,42 @@
+<%- include('./partials/header'); -%>
+<section class="ftco-section ftco-degree-bg">
+    <div class="container">
+        <div class="col-lg-8 ftco-animate">
+            <p class="mb-5">
+                <img src="uploads/<%=post.photo%>" alt="" class="img-fluid">
+            </p>
+            <h2 class="mb-3"><%=post.title%></h2>
+            <p><%=post.postBody%></p>
+
+
+
+            <div class="about-author d-flex p-4 bg-light">
+                <div class="desc">
+                    <h2>Author</h2>
+                    <h3><%=post.author%></h3>
+                    <p><%=post.aboutAuthor%></p>
+                </div>
+            </div>
+
+            <div id="deleteButton" class="btn btn-primary py-3 px-5">Delete Post</div>
+            <script>
+                document.getElementById("deleteButton").addEventListener("click", () => {
+                    $.ajax({
+                        url: '/article/<%=post.b_id%>',
+                        type: 'DELETE',
+                        success: function (result) {
+                            console.log(result);
+                            $("#deleteButton").text(result.message);
+                            if(result.message=="success")
+                            {
+                                window.location.href = "/";
+                            }
+                            
+                        }
+                    });
+                });
+            </script>
+        </div>
+</section> <!-- .section -->
+
+<%- include('./partials/footer'); -%>
