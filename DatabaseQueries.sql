@@ -1,28 +1,26 @@
-use blogger;
+
 
 create table User(
-    user_id int auto_increment, 
+    user_id integer primary key, 
     username varchar(100), 
-    pass varchar(100),
-    primary key(user_id)
+    pass varchar(100)
 );
 
 create table Blog(
-b_id int auto_increment,
+b_id integer primary key,
 title text,
 postBody text,
 photo varchar(150),
-dateandTime timestamp,
+dateandTime text,
 author varchar(100),
 aboutAuthor text,
-primary key(b_id),
-user_id int,
+user_id integer,
 foreign key(user_id) references User(user_id)
 );
 
 
 -- Queries
-
+select * from Blog;
 select * from Blog where b_id=1;
 
 select * from Blog order by dateandTime desc;
