@@ -6,7 +6,7 @@
                 <img src="uploads/<%=post.photo%>" alt="" class="img-fluid">
             </p>
             <h2 class="mb-3"><%=post.title%></h2>
-            <p><%=post.postBody%></p>
+            <pre style="white-space:pre-line;"><%=post.postBody%></pre>
 
 
 
@@ -14,7 +14,7 @@
                 <div class="desc">
                     <h2>Author</h2>
                     <h3><%=post.author%></h3>
-                    <p><%=post.aboutAuthor%></p>
+                    <pre style="white-space:pre-wrap; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"><%=post.aboutAuthor%></pre>
                 </div>
             </div>
 

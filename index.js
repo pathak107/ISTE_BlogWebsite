@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //Session initialiazation
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: "itsasecret",
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }
@@ -170,7 +170,7 @@ app.route('/newPost')
         }
     })
     .post(upload.single('img'), (req, res) => {
-        var query = "INSERT INTO Blog (title, postBody,photo,datetime('now', 'localtime'),author,aboutAuthor,user_id) VALUES (?,?,?,?,?,?)";
+        var query = "INSERT INTO Blog (title, postBody,photo,dateandTime,author,aboutAuthor,user_id) VALUES (?,?,?,datetime('now', 'localtime'),?,?,?)";
         db.run(query, [req.body.title, req.body.postBody,req.file.filename,req.body.author,req.body.aboutAuthor,req.session.user_id], (error) => {
             if(error) console.log(error)
             console.log("Inserted Succesfully");
